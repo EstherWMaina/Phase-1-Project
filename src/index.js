@@ -92,17 +92,25 @@ $.ajax(settings).done(function (response) {
   
     var array = ''
     
-    // products.forEach(element => {
-    //     array = array + 
-    //     `<div  class="mySlides fade">
-    //     <h2>${element.food.label}</h2>
-    //     <img src="${element.food.image}" style="width:100%">
-    //     <button class="shop-item-button" type="button">ADD TO CART</button>
-    //     <small>Price: $10.00</small>
-    //     </div>`
-    // });
-    
+    products.forEach(element => {
+        array = array + 
+        `<div class="mySlides fade">
+        <h2>${element.food.label}</h2>
+        <img src="${element.food.image}" style="width:100%">
+        <button class="shop-item-button" data-name="${element.food.label}">ADD TO CART</button>
+        </div>`
+    });
     container.innerHTML=array
+
+    let buttons = document.querySelectorAll(".shop-item-button")
+    console.log(buttons)
+    buttons.forEach(element => {
+        element.addEventListener('click', (e)=>{
+            console.log(cartList)
+            cartList.push(e.target.dataset.name)
+            updateCart()
+        }) 
+    });
 
  
 });
