@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  
   <title>Soko Yetu</title>
 </head>
 
@@ -25,14 +26,15 @@
           </div>
           <ul>
             <li><a href="#home" data-after="Home">Home</a></li>
-            <li><a href="#Farmers" data-after="Farmers">Farmers</a></li>
+            <li><a href="#Products" data-after="Products">Product</a></li>
             <li><a href="#join-us" data-after="Join us">Join us</a></li>
             <li><a href="#order" data-after="Order">Order</a></li>
             <li><a href="#contact" data-after="Contact">Contact</a></li>
           </ul>
         </div>
       </div>
-    </div>
+</div>
+    
   </section>
   <!-- End Header -->
 
@@ -40,9 +42,9 @@
   <!-- home Section  -->
   <section id="home">
     <div class="home container">
-      <div>
+      <div class="hero">
         <h1>Welcome to Soko Yetu <span></span></h1>
-        <p1>Soko Yetu offers farmers a platform to sell their products and consumers a platform to buy fresh and quality products.</p1>       
+        <p>Soko Yetu offers farmers a platform to sell their products and consumers a platform to buy fresh and quality products.</p>       
       </div>
     </div>
   </section>
@@ -51,60 +53,42 @@
   <!-- Farmers Section -->
   
  
-  <section id="Farmers">
-    <div class="Farmers container">
-      <div class="Farmers-top">
-        <h1 class="section-title">Far<span>me</span>rs</h1>
+  <section id="Products">
+    <div class="Products container">
+      <div class="Products-top">
+        
+        <h1 class="section-title">Search Products</h1>
         <p>Our farmers are from different parts of the country with fresh produce</p>
+        <input type="text" id="searchID">
       </div>
     </div>
-  <!-- Slideshow container -->    
-<div class="slideshow-container">
+  <!-- Slideshow container -->
+
+ <div id="products" class="slideshow-container">
+  products.forEach(element => {
+    array = array + 
+    `<div  class="mySlides fade">
+    <h2>${element.food.label}</h2>
+    <img src="${element.food.image}" style="width:100%">
+    <button class="shop-item-button" type="button">ADD TO CART</button>
+    <small>Price: $10.00</small>
+    </div>`
+});
 
   <!-- Full-width images with caption text -->
     
-  <div class="mySlides fade">
-    <h2>Greens Market</h2>
-    <img src="./assets/spinach.jpg" style="width:100%">
-    <div class="text">Located in Kiambu,the farmer offers: Kaless, Spinach, Terere, Managu, Mchicha, Mrenda and cabbages.</div>
-  </div>
-
-  <div class="mySlides fade">
-    <h2>White meat products</h2>
-    <img src="./assets/white meat.jpg" style="width:100%">
-    <div class="text">From Thika, our farmers have a wide range of white meat products: eggs, chicken, rabbit, pork and fish.</div>
-  </div>
-
-  <div class="mySlides fade">
-    <h2>Irrigation produce</h2>
-    <img src="./assets/watermelon.jpg" style="width:100%">
-    <div class="text">From Tana River, our farmers offer fresh produce entailing; watermelon, garlic, onions and green grams.</div>
-  </div>
-
-  <div class="mySlides fade">
-    <h2>Tuber Vegetables</h2>
-    <img src="./assets/potato.jpg" style="width:100%">
-    <div class="text">Located in Kinangop,the farmer offers: potatoes, yams, cassavas and sweet potatoes.</div>
-  </div>
-
- <!-- <div class="Farmers-item">
-    <div class="icon"> <img src="./assets/potato.jpg"> </div>
-    <h2>Tuber Vegetables</h2>
-    <p>Located in Kinangop,the farmer offers: potatoes, yams, cassavas and sweet potatoes.</p>
-  </div>  -->
-
-  <!-- Next and previous buttons -->
+  <!-- Next and previous buttons 
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
+</div>-->
 <br>
 
-<!-- The dots/circles -->
+<!-- The dots/circles 
 <div style="text-align:center">
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
-</div>
+</div> -->
 </section>
  
   <!-- End Farmers Section -->
@@ -122,15 +106,15 @@
    <form class="w3-container" action="/action_page.php" target="_blank">
     <div class="w3-section">
       <label>Name</label>
-      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:50%;" type="text" name="Name" required>
     </div>
     <div class="w3-section">
       <label>Email</label>
-      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Email" required>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:50%;" type="text" name="Email" required>
     </div>
     <div class="w3-section">
       <label>Subject</label>
-      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Subject" required>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:50%;" name="Subject" required>
     </div>
     <div class="w3-section">
       <label>Join as</label>
@@ -161,47 +145,85 @@
         </div>
       </div>
       <div class="col-right">
-        <h1 class="section-title">Place your order</h1>
+        <h1 class="section-title">Order now</h1>
        <!-- link to a groceries API  --> 
+       <div class ="cart-page"></div> 
+          <table>
+            <th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </th>
+            <tbody id="cartDetails">
+              
+            </tbody>
+          </table>
+          <div class="total-price" >
+            <table>
+              <tr>
+                <td>Total</td>
+                <td id="totalPrice"></td>
+              </tr>
+            </table> <br> <br>
+            <div class="purchase_btn" >
+            <button class="btn btn-dark btn-purchase" type="button" id="purchase">PURCHASE</button> 
+            </div>
+          </div>
       </div>
     </div>
   </section>
    <!-- End About Section -->
 
      <!-- Contact Section -->
-     <section id="contact">
-      <div class="contact container">
-        <div>
-          <h1 class="section-title">Contact <span>info</span></h1>
+   <section id="contact">
+        <div class="contact container">
+          <div>
+            <h1 class="section-title">Contact <span>info</span></h1>
+          </div>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="icon"><img src="./assets/contact.png" style="width:50px;height:50px;" /></div>
+              <div class="contact-info">
+                <h2>+254 785353318</h2>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon"><img src="./assets/Email.png" style="width:50px;height:50px;" /></div>
+              <div class="contact-info">
+                <h2>info@sokoyetu.com</h2>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon"><img src="./assets/address.png" style="width:50px;height:50px;" /></div>
+              <div class="contact-info">
+                <h2>Nairobi, Kenya.</h2>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="icon"><img src="./assets/contact.png" style="width:50px;height:50px;" /></div>
-            <div class="contact-info">
-              <h2>+254 785353318</h2>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="icon"><img src="./assets/Email.png" style="width:50px;height:50px;" /></div>
-            <div class="contact-info">
-              <h2>info@sokoyetu.com</h2>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="icon"><img src="./assets/address.png" style="width:50px;height:50px;" /></div>
-            <div class="contact-info">
-              <h2>Nairobi, Kenya.</h2>
-            </div>
-          </div>
+        <p>Let us know how you shopping experience was.</p>
+        <div class="likes-section">
+          <span id="like-count" class="likes">0 likes</span>
+          <button id="like-button" class="like-button">♥</button>
         </div>
-      </div>
-    </section>
+  
+      <form id="comment-form" class="comment-form">
+          <input
+            class="comment-input"
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Add a comment..."
+          />
+          <button class="comment-button" type="submit">Post</button>
+      </section>
    <!-- End Contact Section -->
 
   <!-- Footer -->
 <footer>
   <section id="footer">
     <div class="footerContainer">
+      <p>Let's Connect</p>
       <div class="social-icon">
         <div class="social-item">
           <a href="https://www.linkedin.com/in/esther-maina-2b3b1a129/"><img src="./assets/linkedinlogo.png" alt="linkedin" style="width:50px;height:50px;" /></a>
@@ -210,12 +232,14 @@
           <a href="https://github.com/EstherWMaina"><img src="./assets/github.png" alt="github" style="width:50px;height:50px;" /></a>
         </div>
       </div>
+     
       <p><b>Copyright © 2022 Soko Yetu All rights reserved</b></p>
     </div>
   </section>
 </footer>
   <!-- End Footer -->
-  <script src="./app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./src/index.js"></script>
 </body>
 
 </html>
